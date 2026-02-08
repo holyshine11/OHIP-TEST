@@ -1,0 +1,101 @@
+/* OHIP API 카탈로그 커스텀 스타일 */
+
+/* 사이드바 */
+.sidebar {
+    position: sticky;
+    top: 76px;
+    max-height: calc(100vh - 90px);
+    overflow-y: auto;
+}
+.sidebar .form-check {
+    margin-bottom: 0.15rem;
+}
+.sidebar .form-check-label {
+    font-size: 0.875rem;
+}
+
+/* API 카드 */
+.api-card {
+    transition: box-shadow 0.15s ease;
+    border: 1px solid #dee2e6;
+}
+.api-card:hover {
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
+}
+.api-card .card-title a {
+    text-decoration: none;
+    color: #212529;
+}
+.api-card .card-title a:hover {
+    color: #0d6efd;
+}
+.api-card .ops-preview {
+    font-size: 0.8rem;
+    color: #6c757d;
+}
+.api-card .ops-preview code {
+    font-size: 0.75rem;
+    background: #f8f9fa;
+    padding: 0.1rem 0.35rem;
+    border-radius: 0.2rem;
+}
+
+/* HTTP 메서드 뱃지 */
+.badge-get { background-color: #198754; }
+.badge-post { background-color: #0d6efd; }
+.badge-put { background-color: #fd7e14; }
+.badge-delete { background-color: #dc3545; }
+.badge-head { background-color: #6c757d; }
+.badge-patch { background-color: #6f42c1; }
+
+/* 상세 페이지 endpoint 테이블 */
+.endpoint-table .badge {
+    min-width: 60px;
+    font-size: 0.75rem;
+}
+.endpoint-table .deprecated-row {
+    opacity: 0.55;
+    text-decoration: line-through;
+}
+.endpoint-table td {
+    vertical-align: middle;
+}
+
+/* 검색바 */
+.search-bar .form-control:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15);
+}
+
+/* 필터 접기 버튼 (모바일) */
+.filter-toggle {
+    display: none;
+}
+@media (max-width: 767.98px) {
+    .filter-toggle {
+        display: block;
+    }
+    .sidebar {
+        position: static;
+        max-height: none;
+    }
+}
+
+/* 페이지네이션 */
+.pagination .page-link {
+    color: #495057;
+}
+.pagination .page-item.active .page-link {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+/* 카드 설명 미리보기 */
+.desc-preview {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: 0.875rem;
+    color: #495057;
+}

@@ -1,0 +1,14 @@
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    volumes:
+      - ./db.sqlite3:/app/db.sqlite3
+      - ./data:/app/data
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py import_opera_apis data/ohip-apis-ko.json &&
+             gunicorn config.wsgi:application --bind 0.0.0.0:8000 --workers 3"

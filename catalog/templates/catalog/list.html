@@ -1,0 +1,169 @@
+{% extends "catalog/base.html" %}
+{% load catalog_tags %}
+
+{% block title %}API 목록 - OHIP API 카탈로그{% endblock %}
+
+{% block content %}
+<div class="row">
+  <!-- 사이드바 필터 -->
+  <aside class="col-md-3 col-lg-2 mb-3">
+    <button class="btn btn-outline-secondary w-100 mb-2 filter-toggle"
+            type="button" data-bs-toggle="collapse" data-bs-target="#filterPanel">
+      필터 펼치기/접기
+    </button>
+    <div class="collapse show sidebar" id="filterPanel">
+      <form method="get" action="{% url 'api-list' %}" id="filterForm">
+        {% if query %}<input type="hidden" name="q" value="{{ query }}">{% endif %}
+        {% if currentSort %}<input type="hidden" name="sort" value="{{ currentSort }}">{% endif %}
+
+        <!-- Content Type -->
+        <h6 class="fw-bold mt-2 mb-1">Content</h6>
+        {% for val, label in typeChoices %}
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="type"
+                 value="{{ val }}" id="type_{{ val }}"
+                 {% if val in selectedTypes %}checked{% endif %}
+                 onchange="this.form.submit()">
+          <label class="form-check-label" for="type_{{ val }}">{{ label }}</label>
+        </div>
+        {% endfor %}
+
+        <!-- Lifecycle -->
+        <h6 class="fw-bold mt-3 mb-1">API Lifecycle</h6>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="lifecycle"
+                 value="deprecated" id="lc_dep"
+                 {% if "deprecated" in selectedLifecycle %}checked{% endif %}
+                 onchange="this.form.submit()">
+          <label class="form-check-label" for="lc_dep">Deprecated 포함</label>
+        </div>
+
+        <!-- Category -->
+        <h6 class="fw-bold mt-3 mb-1">Category</h6>
+        {% for val, label in categoryChoices %}
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="category"
+                 value="{{ val }}" id="cat_{{ forloop.counter }}"
+                 {% if val in selectedCategories %}checked{% endif %}
+                 onchange="this.form.submit()">
+          <label class="form-check-label" for="cat_{{ forloop.counter }}">{{ label }}</label>
+        </div>
+        {% endfor %}
+
+        <div class="mt-3">
+          <a href="{% url 'api-list' %}" class="btn btn-sm btn-outline-secondary w-100">필터 초기화</a>
+        </div>
+      </form>
+    </div>
+  </aside>
+
+  <!-- 본문 -->
+  <div class="col-md-9 col-lg-10">
+    <!-- 검색바 -->
+    <form method="get" action="{% url 'api-list' %}" class="search-bar mb-3">
+      <!-- 기존 필터 유지 -->
+      {% for val in selectedTypes %}<input type="hidden" name="type" value="{{ val }}">{% endfor %}
+      {% for val in selectedCategories %}<input type="hidden" name="category" value="{{ val }}">{% endfor %}
+      {% for val in selectedLifecycle %}<input type="hidden" name="lifecycle" value="{{ val }}">{% endfor %}
+      {% if currentSort %}<input type="hidden" name="sort" value="{{ currentSort }}">{% endif %}
+      <div class="input-group">
+        <input type="text" class="form-control" name="q" value="{{ query|default:'' }}"
+               placeholder="API / Operation / Description 으로 검색">
+        <button class="btn btn-primary" type="submit">검색</button>
+        {% if query %}
+        <a href="{% url 'api-list' %}" class="btn btn-outline-secondary">초기화</a>
+        {% endif %}
+      </div>
+    </form>
+
+    <!-- 결과 요약 + 정렬 -->
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <span class="text-muted">
+        총 <strong>{{ page_obj.paginator.count }}</strong>개
+        {% if query %}&mdash; "<strong>{{ query }}</strong>" 검색 결과{% endif %}
+      </span>
+      <div class="btn-group btn-group-sm">
+        <a href="{% queryString sort='name' %}" class="btn btn-outline-secondary {% if currentSort == 'name' %}active{% endif %}">이름순</a>
+        <a href="{% queryString sort='-name' %}" class="btn btn-outline-secondary {% if currentSort == '-name' %}active{% endif %}">이름역순</a>
+        <a href="{% queryString sort='-ops' %}" class="btn btn-outline-secondary {% if currentSort == '-ops' %}active{% endif %}">Operations 많은순</a>
+      </div>
+    </div>
+
+    <!-- 카드 리스트 -->
+    {% for api in page_obj %}
+    <div class="card api-card mb-3">
+      <div class="card-body">
+        <div class="d-flex align-items-start justify-content-between">
+          <div class="flex-grow-1">
+            <div class="mb-1">
+              <span class="badge bg-{% if api.moduleType == 'Operation' %}primary{% else %}info text-dark{% endif %} me-1">{{ api.moduleTypeKo|default:api.moduleType }}</span>
+              <span class="badge bg-secondary me-1">v1</span>
+              {% if api.deprecatedCount > 0 %}
+              <span class="badge bg-warning text-dark">deprecated: {{ api.deprecatedCount }}</span>
+              {% endif %}
+            </div>
+            <h5 class="card-title mb-1">
+              <a href="{% url 'api-detail' api.apiId %}">{{ api.displayTitle }}</a>
+              {% if api.titleKo and api.title %}
+              <small class="text-muted">({{ api.title }})</small>
+              {% endif %}
+            </h5>
+            <p class="desc-preview mb-2">{{ api.displayDescription }}</p>
+            <div class="d-flex align-items-center gap-3">
+              <span class="text-muted small">
+                Endpoints: <strong>{{ api.operationsCount }}</strong>개
+              </span>
+              <span class="text-muted small">
+                {{ api.categoryKo|default:api.category }}
+              </span>
+            </div>
+          </div>
+        </div>
+        {% if api.previewOps %}
+        <div class="ops-preview mt-2 pt-2 border-top">
+          {% for op in api.previewOps %}
+          <code class="me-1">{{ op }}</code>
+          {% endfor %}
+          {% if api.operationsCount > 5 %}
+          <span class="text-muted">외 {{ api.operationsCount|add:"-5" }}개</span>
+          {% endif %}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    {% empty %}
+    <div class="text-center text-muted py-5">
+      <h5>검색 결과가 없습니다</h5>
+      <p>다른 키워드로 검색하거나 필터를 조정해 보세요.</p>
+    </div>
+    {% endfor %}
+
+    <!-- 페이지네이션 -->
+    {% if page_obj.has_other_pages %}
+    <nav class="mt-3">
+      <ul class="pagination justify-content-center">
+        {% if page_obj.has_previous %}
+        <li class="page-item">
+          <a class="page-link" href="{% queryString page=page_obj.previous_page_number %}">이전</a>
+        </li>
+        {% endif %}
+        {% for num in page_obj.paginator.page_range %}
+          {% if page_obj.number == num %}
+          <li class="page-item active"><span class="page-link">{{ num }}</span></li>
+          {% elif num > page_obj.number|add:"-3" and num < page_obj.number|add:"3" %}
+          <li class="page-item">
+            <a class="page-link" href="{% queryString page=num %}">{{ num }}</a>
+          </li>
+          {% endif %}
+        {% endfor %}
+        {% if page_obj.has_next %}
+        <li class="page-item">
+          <a class="page-link" href="{% queryString page=page_obj.next_page_number %}">다음</a>
+        </li>
+        {% endif %}
+      </ul>
+    </nav>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

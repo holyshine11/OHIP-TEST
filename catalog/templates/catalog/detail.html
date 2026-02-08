@@ -1,0 +1,116 @@
+{% extends "catalog/base.html" %}
+{% load catalog_tags %}
+
+{% block title %}{{ api.displayTitle }} - OHIP API 카탈로그{% endblock %}
+
+{% block content %}
+<div class="mb-3">
+  <a href="{{ backUrl }}" class="btn btn-outline-secondary btn-sm">&larr; 목록으로</a>
+</div>
+
+<div class="card mb-4">
+  <div class="card-body">
+    <div class="mb-2">
+      <span class="badge bg-{% if api.moduleType == 'Operation' %}primary{% else %}info text-dark{% endif %} me-1">{{ api.moduleTypeKo|default:api.moduleType }}</span>
+      <span class="badge bg-secondary me-1">v1</span>
+      <span class="badge bg-light text-dark border">{{ api.categoryKo|default:api.category }}</span>
+      {% if api.deprecatedCount > 0 %}
+      <span class="badge bg-warning text-dark">deprecated: {{ api.deprecatedCount }}</span>
+      {% endif %}
+    </div>
+
+    <h3 class="mb-1">{{ api.displayTitle }}</h3>
+    {% if api.titleKo and api.title %}
+    <p class="text-muted mb-3">{{ api.title }}</p>
+    {% endif %}
+
+    {% if api.descriptionKo %}
+    <p>{{ api.descriptionKo }}</p>
+    {% endif %}
+    {% if api.description %}
+    <details class="mb-3">
+      <summary class="text-muted small">원문 보기</summary>
+      <p class="mt-1 text-muted small">{{ api.description }}</p>
+    </details>
+    {% endif %}
+
+    <div class="row text-center border-top pt-3">
+      <div class="col">
+        <div class="fs-4 fw-bold">{{ api.operationsCount }}</div>
+        <div class="text-muted small">전체 Operations</div>
+      </div>
+      <div class="col">
+        <div class="fs-4 fw-bold text-success">{{ api.activeCount }}</div>
+        <div class="text-muted small">Active</div>
+      </div>
+      <div class="col">
+        <div class="fs-4 fw-bold {% if api.deprecatedCount > 0 %}text-warning{% endif %}">{{ api.deprecatedCount }}</div>
+        <div class="text-muted small">Deprecated</div>
+      </div>
+      <div class="col">
+        <div class="fs-4 fw-bold">{{ endpointCount }}</div>
+        <div class="text-muted small">Endpoints</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HTTP 메서드 요약 -->
+<div class="d-flex gap-2 mb-3 flex-wrap">
+  <span class="text-muted small pt-1">필터:</span>
+  <a href="?method=all" class="btn btn-sm {% if methodFilter == 'all' %}btn-dark{% else %}btn-outline-dark{% endif %}">
+    전체 ({{ endpointCount }})
+  </a>
+  {% for m, cnt in methodSummary %}
+  <a href="?method={{ m }}" class="btn btn-sm {% if methodFilter == m %}btn-dark{% else %}btn-outline-dark{% endif %}">
+    {{ m }} ({{ cnt }})
+  </a>
+  {% endfor %}
+  <a href="?method=deprecated" class="btn btn-sm {% if methodFilter == 'deprecated' %}btn-warning{% else %}btn-outline-warning{% endif %}">
+    Deprecated ({{ deprecatedEndpointCount }})
+  </a>
+</div>
+
+<!-- Endpoint 테이블 -->
+<div class="table-responsive">
+  <table class="table table-sm table-hover endpoint-table">
+    <thead class="table-light">
+      <tr>
+        <th style="width:80px">Method</th>
+        <th>URI</th>
+        <th>Operation ID</th>
+        <th style="width:60px">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for ep in endpoints %}
+      <tr class="{% if ep.deprecated %}deprecated-row{% endif %}">
+        <td>
+          <span class="badge {{ ep.method|methodBadgeClass }}">{{ ep.method }}</span>
+        </td>
+        <td><code>{{ ep.uri }}</code></td>
+        <td class="small">{{ ep.operationId }}</td>
+        <td>
+          {% if ep.deprecated %}
+          <span class="badge bg-warning text-dark">DEP</span>
+          {% endif %}
+        </td>
+      </tr>
+      {% empty %}
+      <tr><td colspan="4" class="text-center text-muted py-3">엔드포인트 없음</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% if api.keywords %}
+<div class="mt-3">
+  <h6>키워드</h6>
+  <div>
+    {% for kw in api.keywords %}
+    <span class="badge bg-light text-dark border me-1 mb-1">{{ kw }}</span>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
+{% endblock %}

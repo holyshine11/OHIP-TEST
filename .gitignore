@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+*.sqlite3
+.env
+staticfiles/
+*.log
+.DS_Store
+.claude/
+docs/.pdca-*.json
+docs/.pdca-snapshots/
+docs/.bkit-memory.json
+.playwright-mcp/
+*.png

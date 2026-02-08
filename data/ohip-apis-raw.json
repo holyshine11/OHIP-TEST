@@ -1,0 +1,952 @@
+[
+  {
+    "id": 1,
+    "title": "Accounts Receivables",
+    "operationsCount": 58,
+    "type": "Operation",
+    "deprecatedCount": 5,
+    "description": "APIs to cater for Accounts Receivables functionality in OPERA Cloud.",
+    "category": "property",
+    "operations": ["putAccountTrace", "getStatementsHistory", "unlinkInvoiceFromStatement", "postChargesToAR", "getProfileAging", "getStatements", "getInvoicesPayments", "getInvoiceAppliedPayments", "compressARInvoic"]
+  },
+  {
+    "id": 2,
+    "title": "Activity",
+    "operationsCount": 22,
+    "type": "Operation",
+    "deprecatedCount": 0,
+    "description": "APIs to cater for Sales Activity functionality in OPERA Cloud. Activities provide you with an account management tool for managing daily tasks such as appointments, sales calls, contact follow-up, and so on.",
+    "category": "property",
+    "operations": ["deleteActivitiesWithOutHotelId", "getActivities", "postActivities", "deleteMultipleActivities", "deleteActivities", "postMultipleActivitiesCompletion", "getActivityLog", "getActivitiesByMultiple"]
+  },
+  {
+    "id": 3,
+    "title": "Activity Management",
+    "operationsCount": 25,
+    "type": "Operation",
+    "deprecatedCount": 0,
+    "description": "APIs to cater for Activity Configuration functionality in OPERA Cloud. In this module you can retrieve, create, update Activity configuration codes, for example create a new Activity Type.",
+    "category": "property",
+    "operations": ["putUpsertAutoTraceOwnerAssignments", "getAutoTraceOwnerAssignments", "putAutoTraceOwnerAssignments", "deleteAutoTraceDefinitions", "copyActivityTypesConfig", "copyAutoTraceDefinitions"]
+  },
+  {
+    "id": 4,
+    "title": "Add an Accompanying Guest to a Reservation",
+    "operationsCount": 4,
+    "type": "Step",
+    "deprecatedCount": 0,
+    "description": "You can link guest profile as an accompanying guest on a reservation. An accompanying guest is someone that also occupies the room but does not require a separate reservation account or has independent stay dates.",
+    "category": "property",
+    "operations": ["getHotelReservations", "postProfile", "getProfiles", "putReservation"]
+  },
+  {
+    "id": 5,
+    "title": "Add Tickets to a Reservation",
+    "operationsCount": 4,
+    "type": "Step",
+    "deprecatedCount": 0,
+    "description": "Reservation Tickets enables you to manage the tickets available and issued for a reservation. This feature utilizes the reservation package functionality and works in conjunction with an integrated ticketing partner solution.",
+    "category": "property",
+    "operations": ["putTickets", "getPackages", "postTickets", "getTickets"]
+  },
+  {
+    "id": 6,
+    "title": "API for Customer Management Service",
+    "operationsCount": 5,
+    "type": "Operation",
+    "deprecatedCount": 0,
+    "description": "This API deals with the different aspect of the CustomerManagement.",
+    "category": "property",
+    "operations": ["getTrackItItems", "postTrackItItems", "putTrackItItems", "deleteTrackItItems", "pingCustomerManagementService"]
+  },
+  {
+    "id": 7,
+    "title": "Back Office Operations",
+    "operationsCount": 2,
+    "type": "Operation",
+    "deprecatedCount": 0,
+    "description": "APIs to cater for Back Office Operations functionality in OPERA Cloud. A common BackOffice industry term is End of Day. This closes and balances each day's business activities.",
+    "category": "property",
+    "operations": ["getBusinessDate", "pingBackOfficeOperationsService"]
+  },
+  {
+    "id": 8,
+    "title": "Block",
+    "operationsCount": 92,
+    "type": "Operation",
+    "deprecatedCount": 9,
+    "description": "APIs to cater for Business Block functionality in OPERA Cloud. A block is a group of rooms held for guests who are attending an event, meeting, or function.",
+    "category": "property",
+    "operations": ["getBlockStatusChanges", "putClearAllRestrictions", "deleteBlockOwners", "pingBlockExternalServiceStatus", "getTracesByDateRange", "setBlockExchangeInterfaces", "postBlockPostingMaster"]
+  },
+  {
+    "id": 9,
+    "title": "Block Configuration",
+    "operationsCount": 55,
+    "type": "Operation",
+    "deprecatedCount": 0,
+    "description": "APIs for Block configuration, such as creating, updating, fetching and removing codes related to blocks.",
+    "category": "property",
+    "operations": ["getBlockRateOverrideReasons", "deleteWashSchedule", "getCutoffSchedules", "getSalesManagersMultipleHotelIds", "postWashSchedule", "deleteBlockSalesAllowanceRange", "putWashSchedule"]
+  },
+  {
+    "id": 10,
+    "title": "Block Reservation Asynchronous",
+    "operationsCount": 21,
+    "type": "Operation",
+    "deprecatedCount": 0,
+    "description": "APIs to cater Block Reservation related asynchronous functionality in OPERA.",
+    "category": "property",
+    "operations": ["headFetchBlockProcessStatus", "getBlockAllocationSummaryProcessStatus", "getBlockAllocationSummary", "getAllocationRangesProcessInfo", "getRecalculateRoomForecastProcessStatus"]
+  },
+  {
+    "id": 11,
+    "title": "Cashiering",
+    "operationsCount": 192,
+    "type": "Operation",
+    "deprecatedCount": 12,
+    "description": "APIs to cater for Cashiering related functionality in OPERA Cloud. Cashiering provides access to a guest folio, posting journals, receipt histories, currency calculations, credit card settlements, and check a guest out.",
+    "category": "property",
+    "operations": ["postFixedCharges", "getfetchStagedTransactions", "removeFixedCharges", "postFiscalInfo", "getBalanceInfo", "getRoundingDifference", "transferFolioToWindow", "registerManualAuthorization"]
+  },
+  {
+    "id": 12,
+    "title": "Cashiering Asynchronous",
+    "operationsCount": 3,
+    "type": "Operation",
+    "deprecatedCount": 0,
+    "description": "APIs to cater for Cashiering related asynchronous functionality in OPERA Cloud.",
+    "category": "property",
+    "operations": ["startFinancialPostingsAsync", "getFinancialPostingsProcessStatusAsync", "getFinancialPostingsAsync"]
+  },
+  {
+    "id": 13,
+    "title": "Cashiering Outbound",
+    "operationsCount": 7,
+    "type": "Operation",
+    "deprecatedCount": 0,
+    "description": "APIs to cater for Cashiering related external (outbound) functionality with OPERA. These APIs facilitate various operations related to getting data from an external system, and inserting it into OPERA.",
+    "category": "property",
+    "operations": ["getCompRedemptions", "reverseCompPostings", "postCompRedemptions", "asyncApproveCompPostings", "authorizeCompRedemptions", "reverseCompRedemptions", "approveCompPostings"]
+  },
+  {
+    "id": 14,
+    "title": "Channel Configuration",
+    "operationsCount": 138,
+    "type": "Operation",
+    "deprecatedCount": 138,
+    "description": "APIs to cater for Channel Management functionality in OPERA Cloud. Channel Management allows a property to configure and administer channels such as OTAs, and web channels.",
+    "category": "property",
+    "operations": ["getCreditCardsMapping", "putGuaranteesMapping", "putHotelsMapping", "getChannelRoomMappingById", "postChannelCardTypeMapping", "putChannelRoomMapping", "putTotalPricingElements"]
+  },
+  {
+    "id": 15,
+    "title": "Check In",
+    "operationsCount": 11,
+    "type": "Step",
+    "deprecatedCount": 0,
+    "description": "This workflow provides a suggested set of operations allowing the user to check in a guest, including searching for available rooms, assigning the room and then proceeding to check in the guest.",
+    "category": "property",
+    "operations": ["putSplitMultiRoomReservation", "postPreCheckInReservation", "getReservation", "getLinkedReservationsSummary", "putProfile", "getHotelRooms", "getHotelReservations"]
+  },
+  {
+    "id": 16,
+    "title": "Check Out",
+    "operationsCount": 10,
+    "type": "Step",
+    "deprecatedCount": 0,
+    "description": "This workflow provides a suggested set of operations to use in order to check out the guest, including posting charges, making payments viewing folio details.",
+    "category": "property",
+    "operations": ["postBillingCharges", "postCheckOut", "getTransactionCodes", "putReservation", "postBillingPayment", "getHotelReservations", "getFolio", "reinstateCheckOut", "generateFolio", "getReservation"]
+  },
+  {
+    "id": 17,
+    "title": "Contactless Guest Journey",
+    "operationsCount": 19,
+    "type": "Step",
+    "deprecatedCount": 0,
+    "description": "A detailed workflow of a guest's contactless journey, starting with availability and making a reservation, checking in the guest, adding an in-house service request, to finally checking out the guest.",
+    "category": "property",
+    "operations": ["postRoomAssignment", "generateFolio", "postBillingCharges", "postServiceRequests", "postCheckOut", "getToken", "getHotelRooms", "getFolio", "getProfiles", "postCheckIn"]
+  },
+  {
+    "id": 18,
+    "title": "Content Service",
+    "operationsCount": 11,
+    "type": "Operation",
+    "deprecatedCount": 0,
+    "description": "Opera Content Service offers capability to manage large content such as images and files.",
+    "category": "property",
+    "operations": ["getFileAttachment", "setCustomizedLetter", "uploadFileAttachment", "getEmailFile", "emailFolioReport", "getFolioReport", "getRegistrationCard", "removeImage", "getImage", "getCustomizedLetter"]
+  },
+  {
+    "id": 19,
+    "title": "Create a Block",
+    "operationsCount": 12,
+    "type": "Step",
+    "deprecatedCount": 0,
+    "description": "This workflow provides a suggested set of operations to use in order to create a new block in OPERA Cloud.",
+    "category": "property",
+    "operations": ["getBlockReservationTypesLOV", "postBlock", "getListOfValues", "getDefaultBlockCode", "putBlockStatus", "postBlockPostingMaster", "getBlockRateCodesLOV"]
+  },
+  {
+    "id": 20,
+    "title": "Create a Room Class Upgrade Rule",
+    "operationsCount": 14,
+    "type": "Step",
+    "deprecatedCount": 0,
+    "description": "Upgrade Rules enable you to configure the rules for calculating the reservation upgrade amounts.",
+    "category": "property",
+    "operations": ["getListOfValues", "testUpsellRules", "getUpsellRules", "getUpsellRateCategoriesEditLOV", "postUpsellRules", "putUpsellRules"]
+  },
+  {
+    "id": 21,
+    "title": "Create a Room Maintenance Request",
+    "operationsCount": 6,
+    "type": "Step",
+    "deprecatedCount": 0,
+    "description": "Room Maintenance enables you manage and resolve maintenance requests such as changing a light bulb, repairing a faulty lock, service a faulty air conditioning unit and so on, for guest rooms.",
+    "category": "property",
+    "operations": ["postRoomMaintenance", "putRoomMaintenance", "getRoomMaintenance"]
+  },
+  {
+    "id": 22,
+    "title": "Create a Room Type Upgrade Rule",
+    "operationsCount": 14,
+    "type": "Step",
+    "deprecatedCount": 0,
+    "description": "Upgrade Rules enable you to configure the rules for calculating the reservation upgrade amounts.",
+    "category": "property",
+    "operations": ["getUpsellRateCategoriesEditLOV", "testUpsellRules", "postUpsellRules", "getUpsellMembershipLevelsOnlyLOV", "getUpsellTrxCodesLOV", "putUpsellRules"]
+  },
+  {
+    "id": 23,
+    "title": "Create a Service Request for a Guest",
+    "operationsCount": 3,
+    "type": "Step",
+    "deprecatedCount": 0,
+    "description": "Service Requests are used for incident, complaint or general request tracking and can be associated with a guest profile, reservation or room.",
+    "category": "property",
+    "operations": ["deleteServiceRequests", "putServiceRequests", "postServiceRequests"]
+  },
+  {
+    "id": 24,
+    "title": "Create a Standard Rate",
+    "operationsCount": 14,
+    "type": "Step",
+    "deprecatedCount": 0,
+    "description": "This workflow provides a suggested set of operations in order to build a new standard rate plan in OPERA Cloud.",
+    "category": "property",
+    "operations": ["getResortRoomTypesLOV", "getListOfValues", "putRatePlan", "putRatePlanSchedules", "postRatePlanSchedules", "postRatePlan"]
+  },
+  {
+    "id": 25,
+    "title": "Create Share Reservations",
+    "operationsCount": 6,
+    "type": "Step",
+    "deprecatedCount": 0,
+    "description": "Create and manage share reservations in OPERA Cloud.",
+    "category": "property",
+    "operations": ["postReservation", "postCombineShareReservations", "getShareReservations", "putShareRateAmount", "deleteShareReservation"]
+  },
+  {
+    "id": 26,
+    "title": "CRM Asynchronous",
+    "operationsCount": 6,
+    "type": "Operation",
+    "deprecatedCount": 0,
+    "description": "APIs to insert Stay Records related asynchronous functionality in OPERA.",
+    "category": "property",
+    "operations": ["getSuspendedStaysDeleteStatus", "getStayRecordsProcessStatus", "getSuspendedStaysDelete", "getStayRecordsProcess", "stayRecords", "deleteSuspendedStays"]
+  },
+  {
+    "id": 27,
+    "title": "CRM Configuration",
+    "operationsCount": 304,
+    "type": "Operation",
+    "deprecatedCount": 8,
+    "description": "APIs for Customer Relationship Management (profile) configuration, such as creating preferences, or address types. It also includes Membership Configuration.",
+    "category": "property",
+    "operations": ["getAddressFormats", "getDistricts", "removeCommunicationType", "getAlternateLanguageGuestTitles", "changeCommunicationType", "changeCityPostalCodes", "removeCityPostalCodes"]
+  },
+  {
+    "id": 28,
+    "title": "Customer Relationship Management",
+    "operationsCount": 159,
+    "type": "Operation",
+    "deprecatedCount": 6,
+    "description": "APIs to cater for Customer Relationship Management (profile) functionality in OPERA Cloud. There are different types of profiles including Guest, Company, Travel Agent, Source, Group, and Contact profile types.",
+    "category": "property",
+    "operations": ["postProfileCommissionAccount", "getSuspendedAddresses", "getSuspendedProfilesErrorsStatByProperty", "addReplaceStayMembership", "getReProcessStageRecordsLogs", "getMembershipDetails"]
+  },
+  {
+    "id": 29,
+    "title": "Customer Relationship Management Outbound",
+    "operationsCount": 12,
+    "type": "Operation",
+    "deprecatedCount": 0,
+    "description": "APIs to cater for Customer Relationship Management external (outbound) functionality with OPERA. These APIs facilitate various operations related to getting data from an external system, and inserting it into OPERA.",
+    "category": "property",
+    "operations": ["postMembershipNumber", "postEnrollment", "getExternalProfiles", "checkIataNumber", "getValidatedAddresses", "downloadExternalProfile", "getValidatedAddress", "getGamingOffers", "validateMembership"]
+  },
+  {
+    "id": 30,
+    "title": "DataValueMapping Service",
+    "operationsCount": 10,
+    "type": "Operation",
+    "deprecatedCount": 0,
+    "description": "APIs which offer external systems to config and use values different than what are configured in opera.",
+    "category": "property",
+    "operations": ["getOperaHotelCode", "getDefaultValues", "putDataValueMappings", "deleteDataValueMappings", "getDvmConversionCodes", "postDataValueMappings", "getDataValueMappings", "pingDataValueMappingService"]
+  },
+  {
+    "id": 31,
+    "title": "Distribution ARI Publication",
+    "operationsCount": 3,
+    "type": "Operation",
+    "deprecatedCount": 0,
+    "description": "Oracle Hospitality Distribution ARI publication message specification for distribution partners to receive in real time property restrictions/availability, rate, and inventory schedules updates.",
+    "category": "distribution",
+    "operations": ["postInventory", "postRestrictions", "postRates"]
+  },
+  {
+    "id": 32,
+    "title": "Distribution Authentication",
+    "operationsCount": 2,
+    "type": "Operation",
+    "deprecatedCount": 1,
+    "description": "API to obtain the access token (in the JWT format) for Distribution channel partner.",
+    "category": "distribution",
+    "operations": ["getToken"]
+  },
+  {
+    "id": 33,
+    "title": "Distribution Book",
+    "operationsCount": 10,
+    "type": "Operation",
+    "deprecatedCount": 5,
+    "description": "OPERA Cloud Distribution Reservations API allows authorized channel partners to create and update reservations for any active property.",
+    "category": "distribution",
+    "operations": ["postReservation", "postCancelReservation", "postOnHoldReservation", "getReservation", "putReservation"]
+  },
+  {
+    "id": 34,
+    "title": "Distribution Content",
+    "operationsCount": 9,
+    "type": "Operation",
+    "deprecatedCount": 4,
+    "description": "Oracle Hospitality Distribution Content is for distribution partners to retrieve property Channel content information.",
+    "category": "distribution",
+    "operations": ["getPropertyInfo", "getPropertiesSummary", "getRatePlansInfo", "getRoomTypesInfo", "getRateRooms"]
+  },
+  {
+    "id": 35,
+    "title": "Distribution Content Notification",
+    "operationsCount": 1,
+    "type": "Operation",
+    "deprecatedCount": 0,
+    "description": "Oracle Hospitality Distribution Content notification message specification for distribution partners.",
+    "category": "distribution",
+    "operations": ["postContent"]
+  },
+  {
+    "id": 36,
+    "title": "Distribution Onboarding",
+    "operationsCount": 2,
+    "type": "Operation",
+    "deprecatedCount": 0,
+    "description": "Oracle Hospitality Distribution Onboarding specification for distribution partners to retrieve and update property status.",
+    "category": "distribution",
+    "operations": ["putPropertyStatus", "getPropertyStatus"]
+  },
+  {
+    "id": 37,
+    "title": "Distribution Outbound Lookup",
+    "operationsCount": 2,
+    "type": "Operation",
+    "deprecatedCount": 0,
+    "description": "Oracle Hospitality Distribution External Lookup is to get rate plan and room types from external channel partners.",
+    "category": "distribution",
+    "operations": ["getExternalRatePlans", "getExternalRoomTypes"]
+  },
+  {
+    "id": 38,
+    "title": "Distribution Property Controls",
+    "operationsCount": 1,
+    "type": "Operation",
+    "deprecatedCount": 0,
+    "description": "Oracle Hospitality Distribution Property Controls specification for distribution partners to retrieve property controls and settings.",
+    "category": "distribution",
+    "operations": ["getPropertyControls"]
+  },
+  {
+    "id": 39,
+    "title": "Distribution Reservation Notification",
+    "operationsCount": 8,
+    "type": "Operation",
+    "deprecatedCount": 4,
+    "description": "OPERA Cloud Distribution Reservation Notifications API allows authorized channel partners to create and update reservations.",
+    "category": "distribution",
+    "operations": ["getReservationNotif", "postReservationNotif", "postCancelReservationNotif", "putReservationNotif"]
+  },
+  {
+    "id": 40,
+    "title": "Distribution Reservation Service",
+    "operationsCount": 3,
+    "type": "Operation",
+    "deprecatedCount": 0,
+    "description": "The OPERA Cloud Distribution Reservation API enables authorized channel partners to create, update and cancel reservations.",
+    "category": "distribution",
+    "operations": ["putReservation", "postReservation", "postCancelReservation"]
+  },
+  {
+    "id": 41,
+    "title": "Distribution Shop",
+    "operationsCount": 8,
+    "type": "Operation",
+    "deprecatedCount": 4,
+    "description": "Oracle Hospitality Distribution Shop is for distribution partners to find properties availability, room-rates offers.",
+    "category": "distribution",
+    "operations": ["getPropertyOffers", "getPropertyOffer", "getPropertyCalendar", "getProperties"]
+  },
+  {
+    "id": 42,
+    "title": "Enterprise Configuration",
+    "operationsCount": 242,
+    "type": "Operation",
+    "deprecatedCount": 0,
+    "description": "APIs to cater for Enterprise Configuration functionality in OPERA Cloud.",
+    "category": "property",
+    "operations": ["putCommunicationMethodsEntDetails", "getCorporateOperatingUnits", "setHotelEvents", "changeHotelNotes", "getFlexFields", "changeTemplateHotelDetails", "putPropertyTypes"]
+  },
+  {
+    "id": 43,
+    "title": "Event Configuration",
+    "operationsCount": 137,
+    "type": "Operation",
+    "deprecatedCount": 0,
+    "description": "This API caters for Event Configuration in OPERA Cloud.",
+    "category": "property",
+    "operations": ["deleteMealTypes", "postRevenueGroups", "putCateringItemRates", "getCateringPackageByChain", "getFunctionSpaceEventTypes", "changeEventCodes", "copyCateringPackagePrice", "postCateringRentalCodes"]
+  },
+  {
+    "id": 44,
+    "title": "Export Configuration",
+    "operationsCount": 22,
+    "type": "Operation",
+    "deprecatedCount": 0,
+    "description": "APIs catering to the managing export master data configuration.",
+    "category": "property",
+    "operations": ["postExportMappings", "getExportMappingsByChain", "getExportSchedules", "removeExportSchedules", "getExportsGenerated", "deleteExistingExportMappings", "getExportMappingLinkedCodes"]
+  },
+  {
+    "id": 45,
+    "title": "Front Desk Configuration",
+    "operationsCount": 352,
+    "type": "Operation",
+    "deprecatedCount": 10,
+    "description": "APIs to cater for Front Desk Configuration in OPERA Cloud. Here you can find operations to get, post, put and delete front desk codes such as commission codes, transaction groups, codes & subgroups, articles, payment methods and credit card types.",
+    "category": "property",
+    "operations": ["getCustomChargeExemptions", "putFolioArrangementCodes", "getFiscalRegions", "getFiscalFolioParameters", "removeFiscalRegions", "getExchangeRatesInfo", "postFiscalGuestTypes", "setBudgetForecast"]
+  },
+  {
+    "id": 46,
+    "title": "Front Desk Operations Outbound",
+    "operationsCount": 2,
+    "type": "Operation",
+    "deprecatedCount": 1,
+    "description": "APIs to cater for Front Desk related external (outbound) functionality with OPERA Cloud.",
+    "category": "property",
+    "operations": ["postExternalRoomKeys", "postRoomKeysOutbound"]
+  },
+  {
+    "id": 47,
+    "title": "Front Desk Operations Service",
+    "operationsCount": 88,
+    "type": "Operation",
+    "deprecatedCount": 1,
+    "description": "APIs to cater for Front Desk Operations and Front Desk Statistic functionality in OPERA Cloud. Front Desk features some of the most commonly used operations such as managing guest arrivals, in-house guests, and guest departures.",
+    "category": "property",
+    "operations": ["postRoomAssignment", "postMassAdvanceCheckIn", "postDailyDocket", "postMassCheckIn", "putRoomKeys", "getFrontOfficeStatisticsWithDateRange", "getCommissionNotes", "changeCommission"]
+  },
+  {
+    "id": 48,
+    "title": "Guest Messages for an In House Guest",
+    "operationsCount": 3,
+    "type": "Step",
+    "deprecatedCount": 0,
+    "description": "With the Messages feature, you can send messages to individual guest reservations or to a selected group of reservations.",
+    "category": "property",
+    "operations": ["postGuestMessages", "getReservation", "putResvGuestMessages"]
+  },
+  {
+    "id": 49,
+    "title": "Housekeeping Service",
+    "operationsCount": 60,
+    "type": "Operation",
+    "deprecatedCount": 0,
+    "description": "APIs to cater for Housekeeping functionality in OPERA Cloud. Housekeeping enables you to schedule daily room cleaning, maintenance, and housekeeping staff activities.",
+    "category": "property",
+    "operations": ["putRoomMaintenance", "setRoomCleaningPriority", "putRoomCleaningPriority", "getTaskSheetTemplate", "deleteTaskSheet", "moveTaskRooms", "getHousekeepingDiscrepancies", "setGuestHousekeepingNotes"]
+  },
+  {
+    "id": 50,
+    "title": "Integration Configuration",
+    "operationsCount": 50,
+    "type": "Operation",
+    "deprecatedCount": 0,
+    "description": "APIs catering to Integration Configuration in OPERA Cloud. Operations such as get Hotel Interface Types, or get UDF mappings.",
+    "category": "property",
+    "operations": ["putInterfaceMachine", "deleteInterfaceMachine", "getHotelInterfaceControllerRegistry", "getPublishers", "getInterfaceRoomStatuses", "deleteInterfaceRoom", "deleteDeliveryMethods"]
+  },
+  {
+    "id": 51,
+    "title": "Integration Processor",
+    "operationsCount": 2,
+    "type": "Operation",
+    "deprecatedCount": 0,
+    "description": "APIs to get Business Events generated in OPERA Cloud.",
+    "category": "property",
+    "operations": ["getBusinessEventsByExternalSystem", "getBusinessEvents"]
+  },
+  {
+    "id": 52,
+    "title": "Inventory",
+    "operationsCount": 13,
+    "type": "Operation",
+    "deprecatedCount": 0,
+    "description": "APIs to cater for Inventory functionality in OPERA Cloud. This includes sell limits for date ranges, viewing and updating the properties inventory, as well as item inventory.",
+    "category": "property",
+    "operations": ["getItemInventory", "putHoldItemsInventory", "pingInventoryService", "getInventoryStatistics", "getBlockInventoryStatisticsMultipleHotelIds", "changeSellLimitByDateRange", "getHotelInventory"]
+  },
+  {
+    "id": 53,
+    "title": "Inventory Asynchronous",
+    "operationsCount": 9,
+    "type": "Operation",
+    "deprecatedCount": 0,
+    "description": "APIs to cater for Inventory related asynchronous functionality in OPERA Cloud.",
+    "category": "property",
+    "operations": ["startRevenueInventoryStatisticsProcess", "getRevenueInventoryStatisticsProcessStatus", "startInventoryStatisticsProcess", "getInventoryStatisticsAsync", "getRevenueInventoryStatistics"]
+  },
+  {
+    "id": 54,
+    "title": "Issue Guest a Digital Key",
+    "operationsCount": 2,
+    "type": "Step",
+    "deprecatedCount": 0,
+    "description": "The Digital Key workflow highlights the operations required for a guest to digitally receive their door key.",
+    "category": "property",
+    "operations": ["postCheckIn"]
+  },
+  {
+    "id": 55,
+    "title": "Leisure Management",
+    "operationsCount": 26,
+    "type": "Operation",
+    "deprecatedCount": 0,
+    "description": "APIs to cater for external Leisure Management functionality integrated with OPERA Cloud.",
+    "category": "property",
+    "operations": ["putActivityBookingForProfile", "getActivityTypes", "deleteActivityLocations", "postActivityStatusCodes", "postActivityTypes", "getActivityStatusCodes", "deleteActivityBookingForProfile"]
+  },
+  {
+    "id": 56,
+    "title": "List of Values Management",
+    "operationsCount": 453,
+    "type": "Operation",
+    "deprecatedCount": 1,
+    "description": "APIs to cater for List of Value functionality in OPERA Cloud. A List of Values in the OPERA Application can be configured by a property.",
+    "category": "property",
+    "operations": ["getTemplatePreferencesLOV", "getUpsellRoomClassViewLOV", "getPublisherPropertiesLOV", "getNegotiatedRatesHotelsLOV", "getTraceDateCalcLOV", "getArrangementCodesNumberLOV"]
+  },
+  {
+    "id": 57,
+    "title": "Nor1 Integrated Upsell",
+    "operationsCount": 4,
+    "type": "Operation",
+    "deprecatedCount": 2,
+    "description": "An upsell service that can be consumed to display upgrade offers to a hotel guest prior to arrival.",
+    "category": "nor1",
+    "operations": ["getUpsellOffers", "postUpsellOffers"]
+  },
+  {
+    "id": 58,
+    "title": "oAuth API for OHIP",
+    "operationsCount": 1,
+    "type": "Operation",
+    "deprecatedCount": 0,
+    "description": "REST API to obtain an OAuth token from the Oracle Hospitality Integration Platform.",
+    "category": "property",
+    "operations": ["getToken"]
+  },
+  {
+    "id": 59,
+    "title": "OPI Token Exchange Service",
+    "operationsCount": 1,
+    "type": "Operation",
+    "deprecatedCount": 0,
+    "description": "Oracle Token Exchange Service Specification.",
+    "category": "property",
+    "operations": ["openPaymentTokenExchange"]
+  },
+  {
+    "id": 60,
+    "title": "OSEM - Create an Event",
+    "operationsCount": 12,
+    "type": "Step",
+    "deprecatedCount": 0,
+    "description": "This workflow provides a suggested set of operations to use in order to create a new event in OPERA Cloud.",
+    "category": "property",
+    "operations": ["changeEvents", "changeEventsResources", "getCateringEventStatusLOV", "getListOfValues", "getEventsResources", "getBlockCatNextStatusesLOV", "getEventRateCodeLOV"]
+  },
+  {
+    "id": 61,
+    "title": "OSEM - Create Event ala cart",
+    "operationsCount": 13,
+    "type": "Step",
+    "deprecatedCount": 0,
+    "description": "This workflow provides a set of operations to create a new, custom event in OPERA Cloud.",
+    "category": "property",
+    "operations": ["getFunctionSpaceSetupStyles", "postEvents", "getInventoryItems", "getSpacesLOV", "getFunctionSpaces", "getEventRateCodeLOV", "getFunctionSpaceEventTypes", "getCateringMenus"]
+  },
+  {
+    "id": 62,
+    "title": "OSEM - Create Event from Package",
+    "operationsCount": 4,
+    "type": "Step",
+    "deprecatedCount": 0,
+    "description": "This workflows shows the steps to create an event from an existing package set up.",
+    "category": "property",
+    "operations": ["getFunctionSpaceAvailability", "postCateringPackage", "getCateringPackages", "getCateringPackagesMultiProperties"]
+  },
+  {
+    "id": 63,
+    "title": "OSEM - Create Event from Template",
+    "operationsCount": 4,
+    "type": "Step",
+    "deprecatedCount": 0,
+    "description": "This workflows suggest the steps required to create an event using an existing template.",
+    "category": "property",
+    "operations": ["getCateringPackagesMultiProperties", "getCateringPackageCodesLOV", "postCateringPackage", "getCateringPackages"]
+  },
+  {
+    "id": 64,
+    "title": "OSEM - Find Event & Event Resources",
+    "operationsCount": 7,
+    "type": "Step",
+    "deprecatedCount": 0,
+    "description": "This is a group of generic operations that are useful for fetching Events and Event Resources.",
+    "category": "property",
+    "operations": ["getEventsOneHotel", "getEvent", "getEventsMultipleHotels", "getBlockEventsLOV", "getBlockEventIdsLOV", "getEventsResources"]
+  },
+  {
+    "id": 65,
+    "title": "OSEM - Function Diary",
+    "operationsCount": 11,
+    "type": "Step",
+    "deprecatedCount": 0,
+    "description": "This workflow lists steps for the Function Diary, which is used to query function space availability.",
+    "category": "property",
+    "operations": ["getFunctionSpaceTypes", "getFunctionSpaces", "getEventCalendarMultipleHotelIds", "getSpacesLOV", "getFunctionSpaceSetupStyles", "getEventCalendar", "getFunctionSpaceEventTypes"]
+  },
+  {
+    "id": 66,
+    "title": "OSEM - Function Space Availability",
+    "operationsCount": 1,
+    "type": "Step",
+    "deprecatedCount": 0,
+    "description": "This is the operation to find available spaces to book an event.",
+    "category": "property",
+    "operations": ["getFunctionSpaceAvailability"]
+  },
+  {
+    "id": 67,
+    "title": "OSEM - Get general configuration data for Events",
+    "operationsCount": 21,
+    "type": "Step",
+    "deprecatedCount": 0,
+    "description": "This is a group of generic operations that are used in the OSEM workflow to get configuration data.",
+    "category": "property",
+    "operations": ["getFunctionSpaceSetupStyles", "getFunctionSpaceLocations", "getSpacesLOV", "getCateringPackages", "getCateringSetupStylesLOV", "getMealTypes", "getEventRateCodeLOV", "getFunctionSpaceEventTypes"]
+  },
+  {
+    "id": 68,
+    "title": "OSEM - Update an Event",
+    "operationsCount": 4,
+    "type": "Step",
+    "deprecatedCount": 0,
+    "description": "Sample calls for updating events and event resources.",
+    "category": "property",
+    "operations": ["deleteEvents", "changeEvents", "changeEventsResources"]
+  },
+  {
+    "id": 69,
+    "title": "Perform a Room Move",
+    "operationsCount": 4,
+    "type": "Step",
+    "deprecatedCount": 0,
+    "description": "The room move action is used to search for and select a new room for an in-house reservation.",
+    "category": "property",
+    "operations": ["moveInHouseGuest", "getRoomMoveHistory", "getHotelRooms"]
+  },
+  {
+    "id": 70,
+    "title": "Post a charge to a Folio",
+    "operationsCount": 3,
+    "type": "Step",
+    "deprecatedCount": 0,
+    "description": "With a guest in house, you can post charges to the guest account by transaction code, price, and quantity.",
+    "category": "property",
+    "operations": ["getTransactionCodes", "getFolio", "postBillingCharges"]
+  },
+  {
+    "id": 71,
+    "title": "Price Availability Rate",
+    "operationsCount": 23,
+    "type": "Operation",
+    "deprecatedCount": 0,
+    "description": "APIs to cater for Price and Rate Availability functionality in OPERA Cloud.",
+    "category": "property",
+    "operations": ["analyzeRateAvailability", "getAvailabilityRatePlanInfo", "putHurdleRates", "pingAvailabilityService", "getAlternateAvailability", "getAvailableUpsells", "getReservationGuarantees"]
+  },
+  {
+    "id": 72,
+    "title": "Price Availability Rate Async",
+    "operationsCount": 3,
+    "type": "Operation",
+    "deprecatedCount": 0,
+    "description": "APIs to cater for Price and Rate Availability Asynchronous functionality in OPERA Cloud.",
+    "category": "property",
+    "operations": ["getRestrictionsProcessStatus", "postRestrictionsProcess", "getRestrictions"]
+  },
+  {
+    "id": 73,
+    "title": "Property Interfaces - Guest Inquiry",
+    "operationsCount": 5,
+    "type": "Step",
+    "deprecatedCount": 0,
+    "description": "Guest Inquiry - facilitates the option to inquire guest / reservation information in order to sending charges to a specific guest.",
+    "category": "property",
+    "operations": ["getReservation", "getHotelReservations"]
+  },
+  {
+    "id": 74,
+    "title": "Property Interfaces - Guest Messages",
+    "operationsCount": 4,
+    "type": "Step",
+    "deprecatedCount": 0,
+    "description": "Operations that utilize Guest Text Messages set by OPERA Cloud or set by an external system.",
+    "category": "property",
+    "operations": ["deleteGuestMessages", "postGuestMessages", "getReservation", "putGuestMessages"]
+  },
+  {
+    "id": 75,
+    "title": "Property Interfaces - Locator",
+    "operationsCount": 3,
+    "type": "Step",
+    "deprecatedCount": 0,
+    "description": "Use these operation to indicate where a guest is in the hotel, if not in their room.",
+    "category": "property",
+    "operations": ["deleteReservationLocators", "postReservationLocators", "getReservationLocators"]
+  },
+  {
+    "id": 76,
+    "title": "Property Interfaces - Post Charges Request",
+    "operationsCount": 6,
+    "type": "Step",
+    "deprecatedCount": 0,
+    "description": "Operations to facilitate sending charges to a specific guest room.",
+    "category": "property",
+    "operations": ["postBillingCharges"]
+  },
+  {
+    "id": 77,
+    "title": "Property Interfaces - Post Simple Charges",
+    "operationsCount": 6,
+    "type": "Step",
+    "deprecatedCount": 0,
+    "description": "Post Simple Charges facilitate the option sending charges to the PMS Guest Room account right after revenue has been created.",
+    "category": "property",
+    "operations": ["postBillingCharges"]
+  },
+  {
+    "id": 78,
+    "title": "Property Interfaces - Room Equipment",
+    "operationsCount": 9,
+    "type": "Step",
+    "deprecatedCount": 0,
+    "description": "This workflow can be used to send specific room related status information to OPERA Cloud.",
+    "category": "property",
+    "operations": ["setGuestHousekeepingServiceRequest", "putRoomRelatedStatus", "postGuestMessages"]
+  },
+  {
+    "id": 79,
+    "title": "Property Interfaces - Wake Up Calls",
+    "operationsCount": 6,
+    "type": "Step",
+    "deprecatedCount": 0,
+    "description": "Used to create, update or delete Wake up calls for Guest rooms/reservations.",
+    "category": "property",
+    "operations": ["putWakeUpCall", "postWakeUpCall", "deleteWakeUpCall"]
+  },
+  {
+    "id": 80,
+    "title": "Provisioning Service",
+    "operationsCount": 1,
+    "type": "Operation",
+    "deprecatedCount": 0,
+    "description": "APIs to cater to provisioning and deprovisioning of new properties and chains in OPERA.",
+    "category": "property",
+    "operations": ["getCurrencies"]
+  },
+  {
+    "id": 81,
+    "title": "Queue Rooms",
+    "operationsCount": 4,
+    "type": "Step",
+    "deprecatedCount": 0,
+    "description": "The OPERA Cloud Queue Reservations/Queue Rooms feature is designed to help you manage room assignments.",
+    "category": "property",
+    "operations": ["getReservationsInQueue", "getReservationQueueStatistics", "deleteReservationFromQueue", "addReservationToQueue"]
+  },
+  {
+    "id": 82,
+    "title": "Rate",
+    "operationsCount": 136,
+    "type": "Operation",
+    "deprecatedCount": 1,
+    "description": "APIs to cater for Rate Availability functionality in OPERA Cloud. Rate Management provides all the tools you need to effectively define and manage the rate structures for a property.",
+    "category": "property",
+    "operations": ["postPromotionGroup", "deletePromotionGroup", "postRateGroups", "putPackage", "postNegotiatedRates", "distributeNegotiatedRates", "changeUpsertRateSeasons", "getTemplateRateSeasons"]
+  },
+  {
+    "id": 83,
+    "title": "Rate Plan Asynchronous Service",
+    "operationsCount": 27,
+    "type": "Operation",
+    "deprecatedCount": 0,
+    "description": "APIs catering to the Rate Plan asynchronous related functionality in a hotel.",
+    "category": "property",
+    "operations": ["startSetDailyRatePlanSchedulesProcess", "headRatePlanDeletionProcessStatus", "getRatePlanSchedulesSyncProcessSummary", "getRatePlanRoomTypesModifyProcessSummary"]
+  },
+  {
+    "id": 84,
+    "title": "Report Master Data Management",
+    "operationsCount": 12,
+    "type": "Operation",
+    "deprecatedCount": 0,
+    "description": "APIs for adding, updating, and deleting stationery reports in OPERA Cloud.",
+    "category": "property",
+    "operations": ["getReports", "changeUpsertReportTextConfigurationMessages", "getReportParameters", "putUpsertGenericReports", "getAllReportGroups", "pingReportsConfigServiceStatus"]
+  },
+  {
+    "id": 85,
+    "title": "Reservation",
+    "operationsCount": 177,
+    "type": "Operation",
+    "deprecatedCount": 5,
+    "description": "APIs to cater for Reservation functionality in OPERA Cloud. OPERA Cloud Reservations provides a complete set of capabilities for creating and updating reservations.",
+    "category": "property",
+    "operations": ["pingReservationExternalService", "getPreConfiguredRoutingInstructions", "putComputeCancellationPolicies", "validateRateInfo", "getExternalSystemDeliveryHistory", "putBreakShareValidations"]
+  },
+  {
+    "id": 86,
+    "title": "Reservation Asynchronous",
+    "operationsCount": 19,
+    "type": "Operation",
+    "deprecatedCount": 0,
+    "description": "APIs to cater for Reservation Asynchronous functionality in OPERA Cloud.",
+    "category": "property",
+    "operations": ["startReservationsDailySummaryProcess", "getReservationsProcessStatus", "startPreferencesMassUpdateProcess", "headMassUpdateProcessStatus", "startReservationDetailsMassUpdateProcess"]
+  },
+  {
+    "id": 87,
+    "title": "Reservation Master Data Management",
+    "operationsCount": 215,
+    "type": "Operation",
+    "deprecatedCount": 3,
+    "description": "APIs to cater for Reservation Configuration in OPERA Cloud. In this module you can retrieve, create, modify or delete configuration related to Reservations, Blocks and Leisure Management.",
+    "category": "property",
+    "operations": ["removeGlobalActionCodes", "deleteGlobalAlerts", "getDepositPolicy", "deleteDiscountReasons", "postDepositPolicy", "removeBlockRankings", "changeTemplateDepositPolicy", "postBookingTypes"]
+  },
+  {
+    "id": 88,
+    "title": "Room Configuration",
+    "operationsCount": 168,
+    "type": "Operation",
+    "deprecatedCount": 0,
+    "description": "APIs to cater for room configuration, such as configuring room types, room Classes, creating new room features, or updating housekeeping room maintenance reasons.",
+    "category": "property",
+    "operations": ["putRoomClass", "copyRooms", "postResortRoomCondition", "removeHousekeepingRoomSchedules", "deleteRoomTypes", "getHousekeepingSectionGroups", "getHousekeepingCreditRules"]
+  },
+  {
+    "id": 89,
+    "title": "Room Rotation Configuration Service",
+    "operationsCount": 30,
+    "type": "Operation",
+    "deprecatedCount": 3,
+    "description": "APIs to cater for Room Rotation Configuration functionality in OPERA Cloud.",
+    "category": "property",
+    "operations": ["postRotationRules", "putRotationPeriod", "getRotationRules", "deleteOverrideReasons", "getUnitGrades", "postUnitGrades", "putUnitGrades", "putRoomOwner", "getAdjustmentReasons"]
+  },
+  {
+    "id": 90,
+    "title": "Room Rotation Service",
+    "operationsCount": 8,
+    "type": "Operation",
+    "deprecatedCount": 0,
+    "description": "APIs to facilitate Room Rotation functionality in OPERA Cloud.",
+    "category": "property",
+    "operations": ["getReservationRotationPointsDetails", "getRoomOwners", "getRoomRotationPoints", "getRoomOwnerships", "pingRoomRotationService", "getReservationRotationPoints", "putRoomRotationPoints"]
+  },
+  {
+    "id": 91,
+    "title": "Sales Event Management",
+    "operationsCount": 45,
+    "type": "Operation",
+    "deprecatedCount": 0,
+    "description": "APIs to cater for Event Management functionality in OPERA Cloud.",
+    "category": "property",
+    "operations": ["deleteEvents", "copyCateringEvents", "getCateringEventPostings", "manageAlternateEvents", "getWaitlistedEvents", "getEventsOneHotel", "changeEventResourceByMenu", "getFunctionSpaceAvailability"]
+  },
+  {
+    "id": 92,
+    "title": "Schedule a Wake Up Call",
+    "operationsCount": 4,
+    "type": "Step",
+    "deprecatedCount": 0,
+    "description": "You can set, view, and cancel wake up calls for individual reservations.",
+    "category": "property",
+    "operations": ["deleteWakeUpCall", "postWakeUpCall", "getWakeUpCalls", "putWakeUpCall"]
+  },
+  {
+    "id": 93,
+    "title": "Search Availability and Book a Reservation in OPERA Cloud",
+    "operationsCount": 13,
+    "type": "Step",
+    "deprecatedCount": 0,
+    "description": "This workflow provides a suggested set of operations which allows the user to check the availability at a property and then proceed to make a reservation.",
+    "category": "property",
+    "operations": ["getReservationPackagesLOV", "getProfiles", "postReservation", "getListOfValues", "getPaymentMethodsLOV", "getPackages"]
+  },
+  {
+    "id": 94,
+    "title": "Search Availability by Room Number",
+    "operationsCount": 3,
+    "type": "Step",
+    "deprecatedCount": 0,
+    "description": "This workflow provides operations that allow the user to check the availability at a property by room type and room Id.",
+    "category": "property",
+    "operations": ["getHotelRooms", "getHotelAvailability", "postReservation"]
+  },
+  {
+    "id": 95,
+    "title": "Upgrade a Reservation in OPERA Cloud using Property APIs",
+    "operationsCount": 5,
+    "type": "Step",
+    "deprecatedCount": 0,
+    "description": "The Upgrade a Reservation workflow highlights the operations required to fetch available offers, and then add the upgrade offer information to a reservation.",
+    "category": "property",
+    "operations": ["getAvailableUpsells", "getReservationUpsellInfo", "getReservation", "postUpsellReservation", "deleteUpsell"]
+  }
+]

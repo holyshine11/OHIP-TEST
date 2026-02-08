@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}OHIP API 카탈로그{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+</head>
+<body>
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'api-list' %}">
+        OHIP API 카탈로그
+      </a>
+      <div class="d-flex align-items-center">
+        {% if user.is_authenticated %}
+          <span class="text-light me-3 small">{{ user.username }}</span>
+          <form method="post" action="{% url 'logout' %}" class="d-inline">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-outline-light btn-sm">로그아웃</button>
+          </form>
+        {% else %}
+          <a href="{% url 'login' %}" class="btn btn-outline-light btn-sm">로그인</a>
+        {% endif %}
+      </div>
+    </div>
+  </nav>
+
+  <main class="container-fluid py-3">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="text-center text-muted small py-3 border-top">
+    OHIP API 카탈로그 &mdash; 사내용
+  </footer>
+
+  <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+  {% block extra_js %}{% endblock %}
+</body>
+</html>
