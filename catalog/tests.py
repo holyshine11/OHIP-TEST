@@ -95,6 +95,41 @@ class ImportCommandTest(TestCase):
         self.assertEqual(Endpoint.objects.count(), 4)
 
 
+@override_settings(REQUIRE_LOGIN=True)
+class LoginRequiredTest(TestCase):
+    """REQUIRE_LOGIN=True 시 비인증 사용자 차단 테스트."""
+
+    def setUp(self):
+        _loadSampleData()
+        self.client = Client()
+
+    def test_anonymousRedirectToLogin(self):
+        """비로그인 시 목록 페이지 접근 → 로그인으로 리다이렉트."""
+        resp = self.client.get("/")
+        self.assertEqual(resp.status_code, 302)
+        self.assertIn("/accounts/login/", resp.url)
+
+    def test_anonymousDetailRedirect(self):
+        """비로그인 시 상세 페이지 접근 → 로그인으로 리다이렉트."""
+        resp = self.client.get("/api/1/")
+        self.assertEqual(resp.status_code, 302)
+        self.assertIn("/accounts/login/", resp.url)
+
+    def test_loginPageAccessible(self):
+        """로그인 페이지 자체는 접근 가능."""
+        resp = self.client.get("/accounts/login/")
+        self.assertEqual(resp.status_code, 200)
+
+    def test_authenticatedAccess(self):
+        """로그인 후 목록 페이지 접근 가능."""
+        from django.contrib.auth import get_user_model
+        User = get_user_model()
+        User.objects.create_user(username="tester", password="testpass123")
+        self.client.login(username="tester", password="testpass123")
+        resp = self.client.get("/")
+        self.assertEqual(resp.status_code, 200)
+
+
 @override_settings(REQUIRE_LOGIN=False)
 class ListViewTest(TestCase):
     """목록 뷰 테스트."""
