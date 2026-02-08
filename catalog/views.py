@@ -30,18 +30,27 @@ def apiListView(request):
             | Q(pk__in=epModuleIds)
         )
 
+    # 필터 파라미터가 하나라도 있으면 "사용자가 필터를 조작한 상태"
+    hasFilterParams = any(
+        k in request.GET for k in ("type", "category", "lifecycle")
+    )
+
     # --- 필터: Content Type ---
-    selectedTypes = request.GET.getlist("type")
-    if selectedTypes:
+    allTypes = ["Operation", "Step"]
+    selectedTypes = request.GET.getlist("type") if hasFilterParams else allTypes
+    if selectedTypes and set(selectedTypes) != set(allTypes):
         qs = qs.filter(moduleType__in=selectedTypes)
 
     # --- 필터: Category ---
-    selectedCategories = request.GET.getlist("category")
-    if selectedCategories:
+    allCategories = list(
+        ApiModule.objects.values_list("category", flat=True).distinct()
+    )
+    selectedCategories = request.GET.getlist("category") if hasFilterParams else allCategories
+    if selectedCategories and set(selectedCategories) != set(allCategories):
         qs = qs.filter(category__in=selectedCategories)
 
     # --- 필터: Lifecycle (deprecated 포함 여부) ---
-    selectedLifecycle = request.GET.getlist("lifecycle")
+    selectedLifecycle = request.GET.getlist("lifecycle") if hasFilterParams else ["deprecated"]
     if "deprecated" not in selectedLifecycle:
         qs = qs.filter(deprecatedCount=0)
 

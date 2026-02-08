@@ -139,20 +139,27 @@ class ListViewTest(TestCase):
         self.client = Client()
 
     def test_listPage200(self):
-        resp = self.client.get("/?lifecycle=deprecated")
+        """기본 진입 시 전체 선택 - deprecated 포함."""
+        resp = self.client.get("/")
         self.assertEqual(resp.status_code, 200)
         self.assertContains(resp, "예약 관리")
+        self.assertContains(resp, "정산")
 
     def test_searchKorean(self):
         resp = self.client.get("/?q=정산")
         self.assertEqual(resp.status_code, 200)
         self.assertContains(resp, "정산")
-        self.assertNotContains(resp, "예약 관리")
 
     def test_filterByType(self):
         resp = self.client.get("/?type=Step&lifecycle=deprecated")
         self.assertEqual(resp.status_code, 200)
         self.assertContains(resp, "정산")
+
+    def test_uncheckDeprecated(self):
+        """deprecated 체크 해제 시 deprecated API 제외."""
+        resp = self.client.get("/?type=Operation&type=Step&category=property")
+        self.assertEqual(resp.status_code, 200)
+        self.assertNotContains(resp, "예약 관리")
 
 
 @override_settings(REQUIRE_LOGIN=False)
